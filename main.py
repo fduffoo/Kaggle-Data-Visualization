@@ -8,10 +8,9 @@ import matplotlib.pyplot as plt
 from matplotlib.dates import DateFormatter
 
 # Load the data into a Pandas DataFrame
-drugs = pd.read_csv("drug-overdose-death-rates new.csv", parse_dates=True)
+drugs = pd.read_csv("drug-overdose-death-rates new.csv", parse_dates=['Year'])
 
 # Set 'Year' column as the index
-drugs['Year'] = pd.to_datetime(drugs['Year'])
 drugs.set_index('Year', inplace=True)
 
 # Check the data types and date range
