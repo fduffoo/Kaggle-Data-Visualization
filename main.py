@@ -22,22 +22,35 @@ print(drugs.head())
 # Create 'charts' folder if it doesn't exist
 os.makedirs('charts', exist_ok=True)
 
-# Plotting the overall drug overdose death rates as a bar chart
+# Exclude rows with specific entities and codes
+entities_and_codes_to_exclude = [('Entity1', 'Code1'), ('Entity2', 'Code2')]  # Replace with the entities and codes you want to exclude
+
+# Filtering using the 'isin' method separately for 'Entity' and 'Code'
+filtered_drugs = drugs[~drugs['Entity'].isin([e[0] for e in entities_and_codes_to_exclude]) &
+                       ~drugs['Code'].isin([e[1] for e in entities_and_codes_to_exclude])]
+
+# Exclude 'Entity' and 'Code' columns from the DataFrame
+filtered_drugs = filtered_drugs.drop(['Entity', 'Code'], axis=1)
+
+# Plotting the overall drug overdose death rates for selected entities as a line plot with a logarithmic scale on the y-axis
 plt.figure(figsize=(12, 6))
-for column in drugs.columns:
-    plt.bar(drugs.index, drugs[column], label=column, alpha=0.7)
+for column in filtered_drugs.columns:
+    plt.plot(filtered_drugs.index, filtered_drugs[column], label=column, marker='o', linestyle='-', alpha=0.7)
 
 # Adding labels and legend
 plt.xlabel('Date')
-plt.ylabel('Death Rates')
-plt.title('Overall Drug Overdose Death Rates in the US')
+plt.ylabel('Death Rates (log scale)')
+plt.title('Overall Drug Overdose Death Rates in the US (1999-2020)')
 plt.legend()
 
 # Formatting date on x-axis
 plt.gca().xaxis.set_major_formatter(DateFormatter('%Y-%m-%d'))
 
+# Set the y-axis to logarithmic scale
+plt.yscale('log')
+
 # Add a horizontal line to separate the two graphs
-plt.axvline(x=drugs.index[-1], color='red', linestyle='--', label='Separation Line')
+plt.axvline(x=filtered_drugs.index[-1], color='red', linestyle='--', label='Separation Line')
 
 # Save the overall plot as a PNG file inside the 'charts' folder
 plt.savefig('charts/overall_drug_overdose_death_rates.png')
@@ -54,7 +67,7 @@ plt.scatter(drugs.index, drugs['Cocaine overdose death rates (CDC WONDER)'], lab
 # Adding labels and legend
 plt.xlabel('Date')
 plt.ylabel('Death Rates')
-plt.title('Cocaine Overdose Death Rates in the US')
+plt.title('Cocaine Overdose Death Rates in the US (1999-2020)')
 plt.legend()
 
 # Formatting date on x-axis
@@ -77,7 +90,7 @@ plt.boxplot(drugs['Any opioid death rates (CDC WONDER)'])
 
 # Adding labels and legend
 plt.xlabel('Opioid Overdose Death Rates')
-plt.title('Opioid Overdose Death Rates in the US')
+plt.title('Opioid Overdose Death Rates in the US (1999-2020)')
 
 # Save the opioid plot as a PNG file inside the 'charts' folder
 plt.savefig('charts/opioid_overdose_death_rates.png')
@@ -94,7 +107,7 @@ plt.plot(drugs.index, drugs['Heroin overdose death rates (CDC WONDER)'], label='
 # Adding labels and legend
 plt.xlabel('Date')
 plt.ylabel('Death Rates')
-plt.title('Heroin Overdose Death Rates in the US')
+plt.title('Heroin Overdose Death Rates in the US (1999-2020)')
 plt.legend()
 
 # Formatting date on x-axis
@@ -118,7 +131,7 @@ plt.step(drugs.index, drugs['Synthetic opioids death rates (CDC WONDER)'], label
 # Adding labels and legend
 plt.xlabel('Date')
 plt.ylabel('Death Rates')
-plt.title('Synthetic Drug Overdose Death Rates in the US')
+plt.title('Synthetic Drug Overdose Death Rates in the US (1999-2020)')
 plt.legend()
 
 # Formatting date on x-axis
@@ -142,7 +155,7 @@ plt.fill_between(drugs.index, 0, drugs['Prescription Opioids death rates (US CDC
 # Adding labels and legend
 plt.xlabel('Date')
 plt.ylabel('Death Rates')
-plt.title('Prescription Drug Overdose Death Rates in the US')
+plt.title('Prescription Drug Overdose Death Rates in the US (1999-2020)')
 plt.legend()
 
 # Formatting date on x-axis
