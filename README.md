@@ -31,6 +31,7 @@ For any issues or questions, please contact Fernando Duffoo.
 Fernando Duffoo
 
 Email: f_duffoo@ad.fhsu.edu
+
 GitHub: github.com/fduffoo
 
 ## Version History
