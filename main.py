@@ -10,6 +10,16 @@ from matplotlib.dates import DateFormatter
 # Load the data into a Pandas DataFrame
 drugs = pd.read_csv("drug-overdose-death-rates new.csv", parse_dates=True)
 
+# Set 'Year' column as the index
+drugs['Year'] = pd.to_datetime(drugs['Year'])
+drugs.set_index('Year', inplace=True)
+
+# Check the data types and date range
+print(drugs.index)
+print(drugs.index.min(), drugs.index.max())
+# Check the structure of your DataFrame
+print(drugs.head())
+
 # Create 'charts' folder if it doesn't exist
 os.makedirs('charts', exist_ok=True)
 
