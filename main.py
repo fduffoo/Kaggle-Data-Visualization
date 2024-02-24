@@ -22,17 +22,17 @@ print(drugs.head())
 # Create 'charts' folder if it doesn't exist
 os.makedirs('charts', exist_ok=True)
 
-# Exclude rows with specific entities and codes
-entities_and_codes_to_exclude = [('Entity1', 'Code1'), ('Entity2', 'Code2')]  # Replace with the entities and codes you want to exclude
+# Exclude rows
+entities_and_codes_to_exclude = [('Entity1', 'Code1'), ('Entity2', 'Code2')]
 
-# Filtering using the 'isin' method separately for 'Entity' and 'Code'
+# Filtering
 filtered_drugs = drugs[~drugs['Entity'].isin([e[0] for e in entities_and_codes_to_exclude]) &
                        ~drugs['Code'].isin([e[1] for e in entities_and_codes_to_exclude])]
 
 # Exclude 'Entity' and 'Code' columns from the DataFrame
 filtered_drugs = filtered_drugs.drop(['Entity', 'Code'], axis=1)
 
-# Plotting the overall drug overdose death rates for selected entities as a line plot with a logarithmic scale on the y-axis
+# Plotting the overall drug overdose death rates on the y-axis
 plt.figure(figsize=(12, 6))
 for column in filtered_drugs.columns:
     plt.plot(filtered_drugs.index, filtered_drugs[column], label=column, marker='o', linestyle='-', alpha=0.7)
