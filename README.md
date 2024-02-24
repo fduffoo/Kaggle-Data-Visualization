@@ -14,12 +14,15 @@ Mini Project 2 is a Python-based data manipulation and visualization project tha
 ## Getting Started
 
 # Clone the repository
+
 ````git clone https://github.com/yourusername/mini-project-2.git cd mini-project-2````
 
 # Install required dependencies
+
 ````pip install -r requirements.txt````
 
 # Run the main script
+
 ````python main.py````
 
 ## Help
