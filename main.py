@@ -84,13 +84,20 @@ plt.show()
 
 #--------------------------------------------------------------------------------------------------------------
 
-# Plotting deaths from opioid overdose only as a box plot
+# Plotting deaths from opioid overdose only as a bar chart with annotations
 plt.figure(figsize=(12, 6))
-plt.boxplot(drugs['Any opioid death rates (CDC WONDER)'])
+bars = plt.bar(drugs.index, drugs['Any opioid death rates (CDC WONDER)'], label='Opioid', alpha=0.7)
 
 # Adding labels and legend
-plt.xlabel('Opioid Overdose Death Rates')
+plt.xlabel('Date')
+plt.ylabel('Death Rates')
 plt.title('Opioid Overdose Death Rates in the US (1999-2020)')
+plt.legend()
+
+# Adding annotations to display the exact values on the bars
+for bar in bars:
+    yval = bar.get_height()
+    plt.text(bar.get_x() + bar.get_width()/2, yval, round(yval, 2), ha='center', va='bottom')
 
 # Save the opioid plot as a PNG file inside the 'charts' folder
 plt.savefig('charts/opioid_overdose_death_rates.png')
