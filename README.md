@@ -1,15 +1,8 @@
-### INF601 - Advanced Programming in Python
 ### Fernando Duffoo
-### Mini Project 2
-
-
-# Project Title
-
-Mini Project 2
 
 ## Description
 
-Mini Project 2 is a Python-based data manipulation and visualization project that utilizes real-world datasets from Kaggle. Leveraging the power of Pandas and Matplotlib, the project focuses on extracting meaningful insights from Kaggle datasets and presenting them through informative visualizations.
+Python-based data manipulation and visualization project that utilizes real-world datasets from Kaggle. Leveraging the power of Pandas and Matplotlib, the project focuses on extracting meaningful insights from Kaggle datasets and presenting them through informative visualizations.
 
 ## Getting Started
 
