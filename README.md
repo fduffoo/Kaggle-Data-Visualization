@@ -1,5 +1,3 @@
-### Fernando Duffoo
-
 ## Description
 
 Python-based data manipulation and visualization project that utilizes real-world datasets from Kaggle. Leveraging the power of Pandas and Matplotlib, the project focuses on extracting meaningful insights from Kaggle datasets and presenting them through informative visualizations.
@@ -7,7 +5,7 @@ Python-based data manipulation and visualization project that utilizes real-worl
 ## Getting Started
 
 **Clone the repository:**
-`git clone https://github.com/yourusername/mini-project-2.git && cd mini-project-2`
+`git clone https://github.com/fduffoo/kaggle-data-visualization.git && cd kaggle-data-visualization`
 
 **Install required dependencies:**
 `pip install -r requirements.txt`
@@ -23,7 +21,7 @@ For any issues or questions, please contact Fernando Duffoo.
 
 Fernando Duffoo
 
-Email: f_duffoo@ad.fhsu.edu
+Email: fernandojduffoo@gmail.com
 
 GitHub: https://github.com/fduffoo
 
