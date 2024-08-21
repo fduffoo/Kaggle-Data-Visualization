@@ -1,7 +1,3 @@
-#  INF601 - Advanced Programming in Python
-#  Fernando Duffoo
-#  Mini Project 2
-
 import os
 import pandas as pd
 import matplotlib.pyplot as plt
